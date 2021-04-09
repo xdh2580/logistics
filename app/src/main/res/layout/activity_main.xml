@@ -30,10 +30,14 @@
         <Button
                 android:text="登录"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button"/>
+                android:layout_height="wrap_content" android:id="@+id/button_login"/>
         <Button
                 android:text="注册"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button2"/>
+                android:layout_height="wrap_content" android:id="@+id/button_register"/>
+        <Button
+                android:text="Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/button_test"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

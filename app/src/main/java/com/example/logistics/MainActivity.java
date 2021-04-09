@@ -1,85 +1,72 @@
 package com.example.logistics;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.mysql.cj.jdbc.Driver;
 
-import javax.sql.ConnectionEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-public class MainActivity extends AppCompatActivity {
+
+    public SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button;
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        bindView();
 
-                String cls = "com.mysql.cj.jdbc.Driver";
-                String url = "jdbc:mysql://192.168.137.1/test1";
-                String user = "root";
-                String password = "123456";
+        MyDBOpenHelper myDBOpenHelper = new MyDBOpenHelper(this,"mydb",null,1);
+        db = myDBOpenHelper.getWritableDatabase();
+    }
 
-                int count = 0 ;
-                try{
-//                    Class.forName(cls);
-                    Connection connection = DriverManager.getConnection(url,user,password);
-                    String a = String.valueOf(connection);
-                    String sql = "select count(1) as sl from table1";
-                    Statement statement = connection.createStatement();
-                    ResultSet rs = statement.executeQuery(sql);
-                    while (rs.next()){
-                        count = rs.getInt("sl");
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
+    private void bindView() {
+        Button button_login = (Button) findViewById(R.id.button_login);
+        Button button_register = (Button) findViewById(R.id.button_register);
+        Button button_test = (Button) findViewById(R.id.button_test);
+
+
+        button_login.setOnClickListener(this);
+        button_register.setOnClickListener(this);
+        button_test.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_login:
+
+                break;
+            case R.id.button_register:
+                Intent intent = new Intent(this,RegisterActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.button_test:
+                StringBuilder sb = new StringBuilder();
+                //参数依次是:表名，列名，where约束条件，where中占位符提供具体的值，指定group by的列，进一步约束
+                //指定查询结果的排序方式
+                Cursor cursor = db.query("user", null, null, null, null, null, null);
+                if (cursor.moveToFirst()) {
+                    do {
+                        int pid = cursor.getInt(cursor.getColumnIndex("user_id"));
+                        String name = cursor.getString(cursor.getColumnIndex("name"));
+                        sb.append("id：" + pid + "\t\tname：" + name + "\n");
+                    } while (cursor.moveToNext());
                 }
+                cursor.close();
+                Toast.makeText(this, sb.toString(), Toast.LENGTH_SHORT).show();
+                break;
+            default:
 
-                Toast.makeText(MainActivity.this,"successful"+ count +"!!!",Toast.LENGTH_SHORT).show();
-            }
-        });
+                break;
 
-        Button button2;
-        button2 = findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                final String cls = "com.mysql.cj.jdbc.Driver";
-                String url = "jdbc:mysql://192.168.137.1/test1";
-                String user = "root";
-                String password = "123456";
-                int count = 0 ;
-                try{
-                    Toast.makeText(MainActivity.this,"begin",Toast.LENGTH_SHORT).show();
-                    Class.forName(cls);
-//                    DriverManager.registerDriver(driver);
-                    Connection connection = DriverManager.getConnection(url,user,password);
-                    String a = String.valueOf(connection);
-                    Toast.makeText(MainActivity.this,a,Toast.LENGTH_SHORT).show();
-                    String sql = "select count(1) as sl from table1";
-                    Statement statement = connection.createStatement();
-                    ResultSet rs = statement.executeQuery(sql);
-                    while (rs.next()){
-                        count = rs.getInt("sl");
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-
-            }
-        });
-
+        }
     }
 }
