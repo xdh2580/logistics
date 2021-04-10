@@ -5,9 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.logistics.util.ShowToast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -41,6 +43,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_login:
+                EditText editText_name = (EditText) findViewById(R.id.edit_login_name);
+                EditText editText_password = (EditText) findViewById(R.id.edit_login_password);
+
+                String loginName = editText_name.getText().toString();
+                String loginPassword = editText_password.getText().toString();
+
+                Cursor cursor1 = db.query("user", null, null, null, null, null, null);
+                boolean r = false;
+                if (cursor1.moveToFirst()) {
+                    do {
+                        String name = cursor1.getString(cursor1.getColumnIndex("name"));
+                        String password = cursor1.getString(cursor1.getColumnIndex("password"));
+                       if(loginName.equals(name)&&loginPassword.equals(password)){
+                           Intent intent = new Intent(MainActivity.this,MActivity.class);
+                           startActivity(intent);
+                           Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+                           r = true;
+                           break;
+                       }else{
+
+                       }
+                    } while (cursor1.moveToNext());
+                }
+                cursor1.close();
+                if (r == false){
+                    Toast.makeText(this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                }
+
 
                 break;
             case R.id.button_register:
@@ -54,9 +84,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Cursor cursor = db.query("user", null, null, null, null, null, null);
                 if (cursor.moveToFirst()) {
                     do {
-                        int pid = cursor.getInt(cursor.getColumnIndex("user_id"));
                         String name = cursor.getString(cursor.getColumnIndex("name"));
-                        sb.append("id：" + pid + "\t\tname：" + name + "\n");
+                        String password = cursor.getString(cursor.getColumnIndex("password"));
+                        sb.append("id：" + name + "\t\tname：" + password + "\n");
                     } while (cursor.moveToNext());
                 }
                 cursor.close();

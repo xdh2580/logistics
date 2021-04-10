@@ -11,22 +11,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" tools:layout_editor_absoluteY="0dp"
             tools:layout_editor_absoluteX="0dp">
-        <ImageView
+        <TextView
+                android:text="VOICELOGISTICS"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" tools:srcCompat="@tools:sample/avatars"
-                android:id="@+id/imageView"/>
+                android:layout_height="wrap_content" android:id="@+id/textView5" android:textAllCaps="true"
+                android:textAlignment="center" android:textSize="24sp" android:textColor="#3F51B5"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editTextTextPersonName" android:hint="name"/>
+                android:id="@+id/edit_login_name" android:hint="name"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editTextTextPersonName2" android:hint="password"/>
+                android:id="@+id/edit_login_password" android:hint="password"/>
         <Button
                 android:text="登录"
                 android:layout_width="match_parent"
