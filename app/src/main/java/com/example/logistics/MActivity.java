@@ -62,11 +62,12 @@ public class MActivity extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_query:
-                Intent intent = new Intent(this,QueryActivity.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(this,QueryActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.button_in:
-
+                Intent intent2 = new Intent(this,InActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.button_out:
 

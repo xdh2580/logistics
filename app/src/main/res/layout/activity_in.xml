@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".InActivity">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:text="货品入库"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView9" android:textAlignment="center"
+                android:textSize="20sp"/>
+        <TextView
+                android:text="选择要入库的货品："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView10"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/spinner_in"/>
+        <TextView
+                android:text="入库的数量："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView11"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_in_quantity" android:hint="输入入库货品数量"/>
+        <Button
+                android:text="入库"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/button_in_storage"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
