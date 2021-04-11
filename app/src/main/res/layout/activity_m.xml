@@ -7,4 +7,95 @@
         android:layout_height="match_parent"
         tools:context=".MActivity">
 
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <Button
+                    android:text="库存查询"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/button_query" android:layout_weight="1"
+            />
+            <Button
+                    android:text="货品入库"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/button_in" android:layout_weight="1"
+            />
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <Button
+                    android:text="货品出库"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" android:id="@+id/button_out" android:layout_weight="1"/>
+            <Button
+                    android:text="新增货品"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" android:id="@+id/button_add" android:layout_weight="1"
+                    android:textAllCaps="false" android:textSize="14sp"
+                    style="@style/Widget.AppCompat.Button"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <Button
+                    android:text="货品管理"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" android:id="@+id/button_manage" android:layout_weight="1"/>
+            <Button
+                    android:text="订单拣货"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" android:id="@+id/button_select" android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:layout_weight="1">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp">
+                </LinearLayout>
+                <Button
+                        android:text="模拟任务"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/button_task" android:layout_weight="1"/>
+                <Button
+                        android:text="其他功能"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/button_other" android:layout_weight="1"/>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp">
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <Button
+                    android:text="语音助手"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/button_voice" android:layout_weight="7"/>
+            <Button
+                    android:text="退出登录"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/button_logout" android:layout_weight="2"/>
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         bindView();
 
-        MyDBOpenHelper myDBOpenHelper = new MyDBOpenHelper(this,"mydb",null,1);
+        MyDBOpenHelper myDBOpenHelper = new MyDBOpenHelper(this,null,1);
         db = myDBOpenHelper.getWritableDatabase();
     }
 
@@ -91,6 +91,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 cursor.close();
                 Toast.makeText(this, sb.toString(), Toast.LENGTH_SHORT).show();
+
+                Intent intent1 = new Intent(MainActivity.this,MActivity.class);
+                startActivity(intent1);
+
                 break;
             default:
 

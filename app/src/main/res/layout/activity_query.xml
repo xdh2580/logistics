@@ -5,40 +5,43 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".QueryActivity">
+
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="0dp">
+            android:layout_height="match_parent">
         <TextView
-                android:text="VOICELOGISTICS"
+                android:text="库存查询"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/textView5" android:textAllCaps="true"
-                android:textAlignment="center" android:textSize="24sp" android:textColor="#3F51B5"/>
+                android:layout_height="wrap_content" android:id="@+id/textView6" android:textAlignment="center"
+                android:textSize="20sp"/>
+        <TextView
+                android:text="按货品名称查询："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView7"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/edit_login_name" android:hint="name"/>
+                android:id="@+id/edit_query_name" android:hint="在此输入要查询的货品名称"/>
+        <TextView
+                android:text="按货架号查询："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView8"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/edit_login_password" android:hint="password" android:password="true"/>
+                android:id="@+id/edit_qurey_shelve" android:hint="在此输入要查询的货架号"/>
         <Button
-                android:text="登录"
+                android:text="查询"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button_login"/>
-        <Button
-                android:text="注册"
+                android:layout_height="wrap_content" android:id="@+id/button_start_query"/>
+        <ListView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button_register"/>
-        <Button
-                android:text="Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button_test"/>
+                android:layout_height="match_parent" android:id="@+id/list_result"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
