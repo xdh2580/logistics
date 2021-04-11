@@ -9,11 +9,11 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class InActivity extends AppCompatActivity {
+public class OutActivity extends AppCompatActivity {
 
-    Button button_in;
-    EditText edit_quantity;
-    Spinner spinner_in;
+    Button button_out;
+    EditText edit_out_quantity;
+    Spinner spinner_out;
     SQLiteDatabase db;
     MyDBOpenHelper myDBOpenHelper;
 
@@ -23,11 +23,11 @@ public class InActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_in);
+        setContentView(R.layout.activity_out);
 
-        spinner_in = (Spinner) findViewById(R.id.spinner_in);
-        button_in = (Button) findViewById(R.id.button_in_storage);
-        edit_quantity = (EditText) findViewById(R.id.edit_in_quantity);
+        spinner_out = (Spinner) findViewById(R.id.spinner_out);
+        button_out = (Button) findViewById(R.id.button_out_storage);
+        edit_out_quantity = (EditText) findViewById(R.id.edit_out_quantity);
 
 
 
@@ -45,32 +45,32 @@ public class InActivity extends AppCompatActivity {
         arrayAdapter.notifyDataSetChanged();
 
 
-        spinner_in.setAdapter(arrayAdapter);
+        spinner_out.setAdapter(arrayAdapter);
 
 
-        button_in.setOnClickListener(new View.OnClickListener() {
+        button_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String inName= (String) spinner_in.getSelectedItem();
+                String outName= (String) spinner_out.getSelectedItem();
 
-                String addNum = edit_quantity.getText().toString();
-                if(!addNum.isEmpty()) {
-                    int addNumInt = Integer.parseInt(addNum);
+                String outNum = edit_out_quantity.getText().toString();
+                if(!outNum.isEmpty()) {
+                    int outNumInt = Integer.parseInt(outNum);
 
-                    Cursor cursor = db.rawQuery("select quantity from goods where name=?", new String[]{inName});
+                    Cursor cursor = db.rawQuery("select quantity from goods where name=?", new String[]{outName});
                     cursor.moveToFirst();
                     int initNum = cursor.getInt(cursor.getColumnIndex("quantity"));
 
-                    int finalNum = initNum + addNumInt;
+                    int finalNum = initNum - outNumInt;
                     String finalNumStr = String.valueOf(finalNum);
 
-                    db.execSQL("update goods set quantity=? where name=?", new String[]{finalNumStr, inName});
+                    db.execSQL("update goods set quantity=? where name=?", new String[]{finalNumStr, outName});
 
 
-                    Toast.makeText(InActivity.this, inName + "成功入库" + addNumInt, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OutActivity.this, outName + "成功出库" + outNumInt, Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(InActivity.this, "入库数量不能为空", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OutActivity.this, "出库数量不能为空", Toast.LENGTH_SHORT).show();
                 }
             }
         });
