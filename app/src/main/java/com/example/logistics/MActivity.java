@@ -74,7 +74,8 @@ public class MActivity extends AppCompatActivity implements View.OnClickListener
                 startActivity(intent3);
                 break;
             case R.id.button_add:
-
+                Intent intent4 = new Intent(this,AddActivity.class);
+                startActivity(intent4);
                 break;
             case R.id.button_manage:
 

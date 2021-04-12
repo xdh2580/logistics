@@ -13,6 +13,51 @@
             android:layout_height="match_parent">
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/textView12"/>
+                android:layout_height="wrap_content" android:id="@+id/textView12" tools:text="新增货品"
+                android:textSize="20sp" android:textAlignment="center"/>
+        <TextView
+                android:text="货品名称："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView13"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_add_good_name" android:hint="输入新增货品的名称"/>
+        <TextView
+                android:text="货品初始数量："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView16"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_add_good_init_quantity" android:hint="输入货品的初始数量"/>
+        <TextView
+                android:text="货品摆放的货架号："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView14"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_add_good_shelve" android:hint="输入货架号"/>
+        <TextView
+                android:text="货架隔层号："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView15"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_add_good_layer" android:hint="输入隔层号"/>
+        <Button
+                android:text="添加货品"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/button_add_good"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
