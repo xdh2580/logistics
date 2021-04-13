@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.logistics.ManageActivity2">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:text="信息管理"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView19" android:textAlignment="center"
+                android:textSize="20sp"/>
+        <TextView
+                android:text="货品名称："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView20"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_manage2_name"/>
+        <TextView
+                android:text="货品库存："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView21"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_manage2_quantity"/>
+        <TextView
+                android:text="货品所在货架："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView22"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_manage2_shelve"/>
+        <TextView
+                android:text="所在货架隔层："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView23"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_manage2_layer"/>
+        <Button
+                android:text="保存修改"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/button_manage2_modify"/>
+        <Button
+                android:text="返回上层"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/button_manage2_quit"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
