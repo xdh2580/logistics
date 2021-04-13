@@ -43,9 +43,19 @@ public class AddActivity extends AppCompatActivity {
                 String shelve = edit_add_good_shelve.getText().toString();
                 String layer = edit_add_good_layer.getText().toString();
 
-                db.execSQL("insert into goods(name,quantity,shelve,layer)VALUES(?,?,?,?)",
-                        new Object[]{name,Integer.parseInt(quantity),Integer.parseInt(shelve),Integer.parseInt(layer)});
-                Toast.makeText(AddActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+
+                if(name.isEmpty()||quantity.isEmpty()||shelve.isEmpty()||layer.isEmpty()){
+                    Toast.makeText(AddActivity.this, "请输入完整的货品信息", Toast.LENGTH_SHORT).show();
+                }else {
+                    try {
+                        db.execSQL("insert into goods(name,quantity,shelve,layer)VALUES(?,?,?,?)",
+                                new Object[]{name, Integer.parseInt(quantity), Integer.parseInt(shelve), Integer.parseInt(layer)});
+                        Toast.makeText(AddActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                        AddActivity.this.finish();
+                    }catch (NumberFormatException ex){
+                        Toast.makeText(AddActivity.this, "输入的格式不正确", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
     }

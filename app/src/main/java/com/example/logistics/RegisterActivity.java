@@ -9,12 +9,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.logistics.util.ShowToast;
 
 public class RegisterActivity extends AppCompatActivity {
 
     public SQLiteDatabase db;
 
+    EditText nameEdit;
+    EditText passwordEdit1;
+    EditText passwordEdit2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,9 +26,9 @@ public class RegisterActivity extends AppCompatActivity {
         db = myDBOpenHelper.getWritableDatabase();
 
 
-        final EditText nameEdit = (EditText) findViewById(R.id.edit_name);
-        final EditText passwordEdit1 = (EditText) findViewById(R.id.edit_password1);
-        final EditText passwordEdit2 = (EditText) findViewById(R.id.edit_password2);
+        nameEdit = (EditText) findViewById(R.id.edit_name);
+        passwordEdit1 = (EditText) findViewById(R.id.edit_password1);
+        passwordEdit2 = (EditText) findViewById(R.id.edit_password2);
 
         Button button_next =(Button) findViewById(R.id.button_next);
         button_next.setOnClickListener(new View.OnClickListener() {

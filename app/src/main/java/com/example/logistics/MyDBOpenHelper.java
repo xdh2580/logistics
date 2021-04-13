@@ -11,11 +11,12 @@ public class MyDBOpenHelper extends SQLiteOpenHelper {
     //数据库第一次创建时被调用
     public void onCreate(SQLiteDatabase db) {
 
+        //账户表user
         db.execSQL("CREATE TABLE user(name VARCHAR(20),password VARCHAR(20))");//AUTOINCREMENT
         db.execSQL("INSERT INTO user(name,password)VALUES('admin','123456')");
         db.execSQL("INSERT INTO user(name,password)VALUES('user1','123456')");
         db.execSQL("INSERT INTO user(name,password)VALUES('user2','654321')");
-
+        //货品表goods
         db.execSQL("CREATE TABLE goods(gid INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(20),quantity INTEGER,shelve INTEGER,layer INTEGER)");
         db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('牛奶',268,1,2)");
         db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('纸巾',354,2,1)");
@@ -30,7 +31,14 @@ public class MyDBOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('夹克',79,3,1)");
         db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('牛仔裤',246,3,2)");
 
-
+        //拣货订单表（订单名称，订单内容）
+        //内容格式存储为字符串(goodName1,quantity1)(goodName2,quantity2)……
+        db.execSQL("create table orders(name varchar(50),content varchar(900))");
+        db.execSQL("insert into orders(name,content)values('拣货订单1','(牛奶,2)(饼干,3)')");
+        db.execSQL("insert into orders(name,content)values('拣货订单2','(毛巾,1)(饼干,3)(鞋子,2)')");
+        db.execSQL("insert into orders(name,content)values('拣货订单3','(牛奶,2)(饼干,3)(夹克,1)(洗衣液,2)(咖啡,4)')");
+        db.execSQL("insert into orders(name,content)values('拣货订单4','(饼干,2)(鞋子,3)(咖啡,1)(牛肉干,2)(洗衣液,4)')");
+        db.execSQL("insert into orders(name,content)values('拣货订单5','(面包,5)(方便面,6)(咖啡,4)(牛仔裤,2)(夹克,2)(纸巾,5)')");
     }
     //软件版本号发生改变时调用
     @Override

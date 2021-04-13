@@ -14,6 +14,7 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
 
 
     SQLiteDatabase db;
+    MyDBOpenHelper myDBOpenHelper;
 
     Button button_start_query;
     ListView list_result;
@@ -29,7 +30,7 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_query);
 
 
-        MyDBOpenHelper myDBOpenHelper = new MyDBOpenHelper(this,null,1);
+        myDBOpenHelper = new MyDBOpenHelper(this,null,1);
         db =myDBOpenHelper.getWritableDatabase();
 
         button_start_query = (Button) findViewById(R.id.button_start_query);

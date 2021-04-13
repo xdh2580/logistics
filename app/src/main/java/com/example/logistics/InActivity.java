@@ -14,6 +14,7 @@ public class InActivity extends AppCompatActivity {
     Button button_in;
     EditText edit_quantity;
     Spinner spinner_in;
+
     SQLiteDatabase db;
     MyDBOpenHelper myDBOpenHelper;
 

@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.logistics.util.ShowToast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
