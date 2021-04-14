@@ -31,7 +31,7 @@
                 android:layout_height="10dp">
         </LinearLayout>
         <TextView
-                android:text="拣货订单列表："
+                android:text="拣货订单列表(货品名称,需要数量)："
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textView26"/>
         <LinearLayout

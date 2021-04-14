@@ -13,6 +13,7 @@ public class SelectActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
     MyDBOpenHelper myDBOpenHelper;
+    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +25,18 @@ public class SelectActivity extends AppCompatActivity {
 
         listView_select_order = findViewById(R.id.list_select_order);
 
-        Cursor cursor = db.rawQuery("select * from orders",null);
+        cursor = db.rawQuery("select * from orders",null);
 
         myOrderAdapter = new OrderAdapter(cursor,this);
 
         listView_select_order.setAdapter(myOrderAdapter);
+//        listView_select_order.setEmptyView(findViewById(R.id.textView));
 
+    }
+    @Override
+    protected void onResume() {
+        cursor = db.rawQuery("select * from orders",null);
+        myOrderAdapter.notifyDataSetChanged();
+        super.onResume();
     }
 }

@@ -43,6 +43,5 @@ public class MyDBOpenHelper extends SQLiteOpenHelper {
     //软件版本号发生改变时调用
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("ALTER TABLE person ADD phone VARCHAR(12) ");
     }
 }
