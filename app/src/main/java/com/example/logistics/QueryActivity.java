@@ -82,9 +82,9 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
                 int quantity = cursor1.getInt(cursor1.getColumnIndex("quantity"));
                 int shelve = cursor1.getInt(cursor1.getColumnIndex("shelve"));
                 int layer = cursor1.getInt(cursor1.getColumnIndex("layer"));
-                String a = "name:\t" + name + "\tquantity:\t"+quantity+"\tshelves:\t" + shelve + "\tlayer:\t" + layer + "\n";
+                String a = "名称:" + name + "\t\t数量:"+quantity+"\t\t货架:" + shelve + "\t\t隔层:" + layer + "\n";
                 resultList.add(a);
-                total.append("name:\t" + name + "\tquantity:\t"+quantity+"\tshelves:\t" + shelve + "\tlayer:\t" + layer + "\n");
+                total.append(a);
             } while (cursor1.moveToNext());
         }
         cursor1.close();
@@ -92,7 +92,7 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
 
         String all = total.toString();
         if(!all.isEmpty()) {
-            Toast.makeText(this, all, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "查询成功", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "没有符合条件的货品信息", Toast.LENGTH_SHORT).show();
         }

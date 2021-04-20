@@ -21,12 +21,17 @@
                     android:text="库存查询"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" android:id="@+id/button_query" android:layout_weight="1"
-            />
+                    android:background="@mipmap/query" android:textStyle="bold"
+                    android:textSize="20sp" android:layout_marginStart="30dp" android:layout_marginTop="12dp"
+                    android:layout_marginEnd="30dp" android:layout_marginBottom="12dp"
+                    android:hapticFeedbackEnabled="false" android:textColor="#176EB3"/>
             <Button
                     android:text="货品入库"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" android:id="@+id/button_in" android:layout_weight="1"
-            />
+                    android:background="@mipmap/in" android:textStyle="bold"
+                    android:textSize="20sp" android:layout_marginStart="30dp" android:layout_marginTop="12dp"
+                    android:layout_marginEnd="30dp" android:layout_marginBottom="12dp" android:textColor="#176EB3"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
@@ -35,13 +40,19 @@
             <Button
                     android:text="货品出库"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent" android:id="@+id/button_out" android:layout_weight="1"/>
+                    android:layout_height="match_parent" android:id="@+id/button_out" android:layout_weight="1"
+                    android:background="@mipmap/out" android:textStyle="bold"
+                    android:textSize="20sp" android:layout_marginStart="30dp" android:layout_marginTop="12dp"
+                    android:layout_marginEnd="30dp" android:layout_marginBottom="12dp" android:textColor="#176EB3"/>
             <Button
                     android:text="新增货品"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" android:id="@+id/button_add" android:layout_weight="1"
-                    android:textAllCaps="false" android:textSize="14sp"
-                    style="@style/Widget.AppCompat.Button"/>
+                    android:textAllCaps="false" android:textSize="20sp" android:layout_marginStart="30dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="30dp" android:layout_marginBottom="12dp"
+                    style="@style/Widget.AppCompat.Button" android:background="@mipmap/add" android:textStyle="bold"
+                    android:textColor="#176EB3"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
@@ -50,11 +61,17 @@
             <Button
                     android:text="货品管理"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent" android:id="@+id/button_manage" android:layout_weight="1"/>
+                    android:layout_height="match_parent" android:id="@+id/button_manage" android:layout_weight="1"
+                    android:background="@mipmap/manage" android:textStyle="bold" android:textSize="20sp"
+                    android:textAllCaps="false" android:layout_marginStart="30dp" android:layout_marginTop="12dp"
+                    android:layout_marginEnd="30dp" android:layout_marginBottom="12dp" android:textColor="#176EB3"/>
             <Button
                     android:text="订单拣货"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent" android:id="@+id/button_select" android:layout_weight="1"/>
+                    android:layout_height="match_parent" android:id="@+id/button_select" android:layout_weight="1"
+                    android:background="@mipmap/select" android:textStyle="bold" android:textSize="20sp"
+                    android:layout_marginStart="30dp" android:layout_marginTop="12dp"
+                    android:layout_marginEnd="30dp" android:layout_marginBottom="12dp" android:textColor="#176EB3"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
@@ -72,11 +89,14 @@
                 <Button
                         android:text="模拟任务"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button_task" android:layout_weight="1"/>
+                        android:layout_height="wrap_content" android:id="@+id/button_task" android:layout_weight="1"
+                        android:alpha="0.8" android:textColor="#4CAF50"
+                />
                 <Button
                         android:text="其他功能"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button_other" android:layout_weight="1"/>
+                        android:layout_height="wrap_content" android:id="@+id/button_other" android:layout_weight="1"
+                        android:textColor="#4CAF50" android:alpha="0.8"/>
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
@@ -91,11 +111,13 @@
             <Button
                     android:text="语音助手"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/button_voice" android:layout_weight="7"/>
+                    android:layout_height="wrap_content" android:id="@+id/button_voice" android:layout_weight="7"
+                    android:textColor="#9C27B0" android:alpha="0.8"/>
             <Button
                     android:text="退出登录"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/button_logout" android:layout_weight="2"/>
+                    android:layout_height="wrap_content" android:id="@+id/button_logout" android:layout_weight="2"
+                    android:textColor="#E91E63" android:alpha="0.8"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

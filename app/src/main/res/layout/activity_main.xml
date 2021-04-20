@@ -31,7 +31,8 @@
         <Button
                 android:text="登录"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button_login"/>
+                android:layout_height="wrap_content" android:id="@+id/button_login"
+                android:alpha="0.9"/>
         <Button
                 android:text="注册"
                 android:layout_width="match_parent"
@@ -39,6 +40,7 @@
         <Button
                 android:text="Button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button_test"/>
+                android:layout_height="wrap_content" android:id="@+id/button_test"
+                android:background="@drawable/button_drawbale"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

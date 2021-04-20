@@ -90,13 +90,16 @@ public class MActivity extends AppCompatActivity implements View.OnClickListener
                 startActivity(intent7);
                 break;
             case R.id.button_other:
-
+                Intent intent8 = new Intent(this,OtherActivity.class);
+                startActivity(intent8);
                 break;
             case R.id.button_voice:
 
                 break;
             case R.id.button_logout:
-
+                Intent intent10 = new Intent(MActivity.this,MainActivity.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent10);
                 break;
             default:
                 break;

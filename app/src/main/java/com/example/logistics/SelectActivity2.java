@@ -61,7 +61,7 @@ public class SelectActivity2 extends AppCompatActivity {
 //                SelectActivity2.this.finish();
 
                 updateGoods();//更新数据库中的goods表（货品的数量）
-
+                //退出到指定activity并清空返回栈
                 Intent intent = new Intent(SelectActivity2.this,MActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
