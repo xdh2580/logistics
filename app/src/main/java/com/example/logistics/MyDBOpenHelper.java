@@ -12,7 +12,8 @@ public class MyDBOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         //账户表user
-        db.execSQL("CREATE TABLE user(name VARCHAR(20),password VARCHAR(20))");//AUTOINCREMENT
+        db.execSQL("CREATE TABLE user(name varchar(20),password varchar(20))");//AUTOINCREMENT
+        db.execSQL("INSERT INTO user(name,password)VALUES('a','123')");
         db.execSQL("INSERT INTO user(name,password)VALUES('admin','123456')");
         db.execSQL("INSERT INTO user(name,password)VALUES('user1','123456')");
         db.execSQL("INSERT INTO user(name,password)VALUES('user2','654321')");
@@ -39,6 +40,11 @@ public class MyDBOpenHelper extends SQLiteOpenHelper {
         db.execSQL("insert into orders(name,content)values('拣货订单3','(牛奶,2)(饼干,3)(夹克,1)(洗衣液,2)(咖啡,4)')");
         db.execSQL("insert into orders(name,content)values('拣货订单4','(饼干,2)(鞋子,3)(咖啡,1)(牛肉干,2)(洗衣液,4)')");
         db.execSQL("insert into orders(name,content)values('拣货订单5','(面包,5)(方便面,6)(咖啡,4)(牛仔裤,2)(夹克,2)(纸巾,5)')");
+
+        //Log日志表，纪录所有的操作及变更
+        //type为操作变更的类型，login登录，logout退出登录，register注册，in入库，out出库，add新增货品，mod修改货品信息，del删除货品信息,select完成拣货
+        //detail为该条操作的详细信息，time为操作的时间
+        db.execSQL("create table log(user varchar(20),type varchar(20),detail varchar(50),time varchar(30))");
     }
     //软件版本号发生改变时调用
     @Override

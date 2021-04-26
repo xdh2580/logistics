@@ -50,6 +50,8 @@ public class AddActivity extends AppCompatActivity {
                     try {
                         db.execSQL("insert into goods(name,quantity,shelve,layer)VALUES(?,?,?,?)",
                                 new Object[]{name, Integer.parseInt(quantity), Integer.parseInt(shelve), Integer.parseInt(layer)});
+                        ChangeLog.add(AddActivity.this,Utils.currentLoginUserName,db,
+                                "新增货品名称:"+name+" 初始数量:"+quantity+" 货架:"+shelve+" 隔层:"+layer);
                         Toast.makeText(AddActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
                         AddActivity.this.finish();
                     }catch (NumberFormatException ex){

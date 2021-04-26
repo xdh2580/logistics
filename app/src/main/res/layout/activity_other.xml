@@ -24,5 +24,9 @@
                 android:text="导入数据库文件"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/button_other_import"/>
+        <Button
+                android:text="查看日志记录"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/button_other_check"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

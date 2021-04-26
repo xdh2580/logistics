@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                        if(loginName.equals(name)&&loginPassword.equals(password)){
                            Intent intent = new Intent(MainActivity.this,MActivity.class);
                            startActivity(intent);
+                            Utils.currentLoginUserName = name;//记录当前登录的用户名
+                           ChangeLog.logIn(MainActivity.this,name,db);//保存登录日志记录
                            Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
                            r = true;
                            break;
@@ -102,4 +104,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
+
+//    //将当前登录的用户名存储到sharedPreference
+//     考虑不持久化存储，在Utils类使用一个属性来记录即可
+//    private void saveLoginNameInSharedPreferences(String name) {
+//    }
 }

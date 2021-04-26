@@ -49,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
                     values.put("name", name);
                     values.put("password", password1);
                     db.insert("user", null, values);
+                    ChangeLog.register(RegisterActivity.this,name,db,password1);
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
                 }

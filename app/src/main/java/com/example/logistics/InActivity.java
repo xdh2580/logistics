@@ -68,7 +68,7 @@ public class InActivity extends AppCompatActivity {
 
                     db.execSQL("update goods set quantity=? where name=?", new String[]{finalNumStr, inName});
 
-
+                    ChangeLog.in(InActivity.this,Utils.currentLoginUserName,db,inName+"成功入库"+addNum);
                     Toast.makeText(InActivity.this, inName + "成功入库" + addNumInt, Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(InActivity.this, "入库数量不能为空", Toast.LENGTH_SHORT).show();

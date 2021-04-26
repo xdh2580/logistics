@@ -69,10 +69,13 @@ public class ManageActivity2 extends AppCompatActivity {
                     db.execSQL("update goods set name=?,quantity=?,shelve=?,layer=? where name=?",
                             new Object[]{modName,Integer.parseInt(modQuantity),Integer.parseInt(modShelve),
                                     Integer.parseInt(modLayer),name});
+                    //修改信息写入log稍微复杂些，此处根据修改的信息不同写入不同的detail,封装成方法
+                    writeModLog(modName,modQuantity,modShelve,modLayer);
                     Toast.makeText(ManageActivity2.this, "修改成功", Toast.LENGTH_SHORT).show();
                     ManageActivity2.this.finish();
                 }
             }
+
         });
         Button_manage2_quit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +84,55 @@ public class ManageActivity2 extends AppCompatActivity {
             }
         });
     }
+    //修改货品信息时写入log记录
+    private void writeModLog(String modName, String modQuantity, String modShelve, String modLayer) {
+        boolean changeName = !modName.equals(name);
+        boolean changeQuantity = !String.valueOf(quantity).equals(modQuantity);
+        boolean changeShelve = !String.valueOf(shelve).equals(modShelve);
+        boolean changeLayer = !String.valueOf(layer).equals(modLayer);
 
+        StringBuilder detail = new StringBuilder();
+        detail.append(name);
+        if(changeName){
+            String toAppend = "名称改为:"+modName;
+            detail.append(toAppend);
+        }
+        if(changeQuantity){
+            String toAppend = "数量改为:"+modQuantity;
+            detail.append(toAppend);
+        }
+        if(changeShelve){
+            String toAppend = "货架改为:"+modShelve;
+            detail.append(toAppend);
+        }
+        if(changeLayer){
+            String toAppend = "隔层改为:"+modLayer;
+            detail.append(toAppend);
+        }
+        ChangeLog.mod(ManageActivity2.this,Utils.currentLoginUserName,db, detail.toString());
+//        if(changeName&&!changeQuantity&&!changeShelve&&!changeLayer){
+//            ChangeLog.mod(ManageActivity2.this, Utils.currentLoginUserName, db,
+//                    "修改货品" + name + "的信息为名称:" + modName);
+//        }else if(!changeName&&changeQuantity&&!changeShelve&&!changeLayer){
+//            ChangeLog.mod(ManageActivity2.this, Utils.currentLoginUserName, db,
+//                    "修改货品" + name + "的信息为名称:" + modName);
+//        }else if(!changeName&&!changeQuantity&&changeShelve&&!changeLayer){
+//            ChangeLog.mod(ManageActivity2.this, Utils.currentLoginUserName, db,
+//                    "修改货品" + name + "的信息为名称:" + modName);
+//        }else if(!changeName&&!changeQuantity&&!changeShelve&&changeLayer){
+//            ChangeLog.mod(ManageActivity2.this, Utils.currentLoginUserName, db,
+//                    "修改货品" + name + "的信息为名称:" + modName);
+//        }else if(changeName&&changeQuantity&&!changeShelve&&!changeLayer){
+//            ChangeLog.mod(ManageActivity2.this, Utils.currentLoginUserName, db,
+//                    "修改货品" + name + "的信息为名称:" + modName);
+//        }else if(!changeName&&changeQuantity&&changeShelve&&!changeLayer){
+//            ChangeLog.mod(ManageActivity2.this, Utils.currentLoginUserName, db,
+//                    "修改货品" + name + "的信息为名称:" + modName);
+//        }else if(!changeName&&!changeQuantity&&changeShelve&&changeLayer){
+//            ChangeLog.mod(ManageActivity2.this, Utils.currentLoginUserName, db,
+//                    "修改货品" + name + "的信息为名称:" + modName);
+//        }
+    }
     private void initView() {
         edit_manage2_name = findViewById(R.id.edit_manage2_name);
         edit_manage2_quantity = findViewById(R.id.edit_manage2_quantity);

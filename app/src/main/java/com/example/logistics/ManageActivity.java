@@ -56,6 +56,7 @@ public class ManageActivity extends AppCompatActivity {
         button_manage_mod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(ManageActivity.this,ManageActivity2.class);
                 intent.putExtra("name",spinner_manage_select.getSelectedItem().toString());
                 startActivity(intent);
@@ -72,8 +73,10 @@ public class ManageActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 db.execSQL("delete from goods where name=?",
                                         new String[]{spinner_manage_select.getSelectedItem().toString()});
-                                notifyDataChanged(arrayAdapter);
+                                ChangeLog.del(ManageActivity.this,Utils.currentLoginUserName,db,
+                                        "删除货品"+spinner_manage_select.getSelectedItem().toString());
                                 Toast.makeText(ManageActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
+                                notifyDataChanged(arrayAdapter);
                             }
                         })
                         .setNegativeButton("取消",null);

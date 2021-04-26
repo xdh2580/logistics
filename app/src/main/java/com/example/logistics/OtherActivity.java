@@ -1,5 +1,6 @@
 package com.example.logistics;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ public class OtherActivity extends AppCompatActivity implements View.OnClickList
 
     Button button_other_export;
     Button button_other_import;
+    Button button_other_check;
     File fileOfDatabase;
 //     dirForImport;
     File dirForImport;
@@ -48,11 +50,13 @@ public class OtherActivity extends AppCompatActivity implements View.OnClickList
     private void init() {
         button_other_export = findViewById(R.id.button_other_export);
         button_other_import = findViewById(R.id.button_other_import);
+        button_other_check = findViewById(R.id.button_other_check);
 
         button_other_export.setOnClickListener(this);
         button_other_import.setOnClickListener(this);
+        button_other_check.setOnClickListener(this);
 
-        fileOfDatabase = new File("/data/data/com.xdh.allbymyself/databases/my.db");
+        fileOfDatabase = new File("/data/data/com.example.logistics/databases/my.db");
 
         myDBOpenHelper = new MyDBOpenHelper(this,null,1);
         db = myDBOpenHelper.getWritableDatabase();
@@ -97,11 +101,15 @@ public class OtherActivity extends AppCompatActivity implements View.OnClickList
 
 
                 break;
-
+            case R.id.button_other_check:
+                ChangeLog.toastCheckAll(OtherActivity.this,db);
+                break;
             default:
                 break;
         }
     }
+
+
 
     /**
      * 通过字节流实现文件的拷贝

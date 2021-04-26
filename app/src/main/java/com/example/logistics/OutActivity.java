@@ -63,12 +63,15 @@ public class OutActivity extends AppCompatActivity {
                     int initNum = cursor.getInt(cursor.getColumnIndex("quantity"));
 
                     int finalNum = initNum - outNumInt;
+
                     String finalNumStr = String.valueOf(finalNum);
-
-                    db.execSQL("update goods set quantity=? where name=?", new String[]{finalNumStr, outName});
-
-
-                    Toast.makeText(OutActivity.this, outName + "成功出库" + outNumInt, Toast.LENGTH_SHORT).show();
+                    if(finalNum < 0){
+                        Toast.makeText(OutActivity.this, "库存不足", Toast.LENGTH_SHORT).show();
+                    }else {
+                        db.execSQL("update goods set quantity=? where name=?", new String[]{finalNumStr, outName});
+                        ChangeLog.out(OutActivity.this,Utils.currentLoginUserName,db,outName+"成功出库"+outNum);
+                        Toast.makeText(OutActivity.this, outName + "成功出库" + outNumInt, Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     Toast.makeText(OutActivity.this, "出库数量不能为空", Toast.LENGTH_SHORT).show();
                 }
