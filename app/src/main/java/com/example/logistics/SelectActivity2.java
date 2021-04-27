@@ -19,6 +19,8 @@ public class SelectActivity2 extends AppCompatActivity {
     Button button_select2_quit;
     Button button_select2_finish;
     ArrayAdapter<String> arrayAdapter;
+    String orderName;//当前拣货的订单的名称
+    String orderContent;//订单内容
     ArrayList<String> goodList;//content拆分的集合，元素为字符串形式的(name1,quantity1)……
     HashMap<String,Integer> goodMap;//goodList转化成的map,key为货品名，value为要拣货的数量
 
@@ -29,11 +31,11 @@ public class SelectActivity2 extends AppCompatActivity {
 
         init();
 
-        final String orderName = getIntent().getStringExtra("name");
+        orderName = getIntent().getStringExtra("name");
 
         Cursor cursor = db.rawQuery("select * from orders where name=?",new String[]{orderName});
         cursor.moveToFirst();
-        String orderContent = cursor.getString(cursor.getColumnIndex("content"));
+        orderContent = cursor.getString(cursor.getColumnIndex("content"));
         TextView textView = findViewById(R.id.textView27);
         textView.setText(orderName);
 
@@ -57,6 +59,7 @@ public class SelectActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 db.execSQL("delete from orders where name=?",new String[]{orderName});
+                writeSelectLog();
                 Toast.makeText(SelectActivity2.this, "拣货完成", Toast.LENGTH_SHORT).show();
 //                SelectActivity2.this.finish();
 
@@ -68,7 +71,14 @@ public class SelectActivity2 extends AppCompatActivity {
             }
         });
 
+    }
 
+
+    //记录拣货完成的log
+    private void writeSelectLog(){
+        String detail;
+        detail = "订单拣货完成:"+orderName+orderContent;
+        ChangeLog.select(SelectActivity2.this,Utils.currentLoginUserName,db,detail);
     }
 
     //拣货完成后更新货品数量

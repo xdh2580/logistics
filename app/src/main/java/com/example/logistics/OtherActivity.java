@@ -1,5 +1,6 @@
 package com.example.logistics;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -102,7 +103,9 @@ public class OtherActivity extends AppCompatActivity implements View.OnClickList
 
                 break;
             case R.id.button_other_check:
-                ChangeLog.toastCheckAll(OtherActivity.this,db);
+//                ChangeLog.toastCheckAll(OtherActivity.this,db);
+                Intent intent = new Intent(OtherActivity.this,OtherCheckActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
