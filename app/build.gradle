@@ -20,6 +20,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    allprojects {
+        repositories {
+
+            jcenter()
+            mavenCentral()
+        }
+    }
 }
 
 dependencies {

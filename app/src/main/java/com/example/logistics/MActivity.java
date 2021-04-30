@@ -94,7 +94,8 @@ public class MActivity extends AppCompatActivity implements View.OnClickListener
                 startActivity(intent8);
                 break;
             case R.id.button_voice:
-
+                Intent intent9 = new Intent(this,VoiceActivity.class);
+                startActivity(intent9);
                 break;
             case R.id.button_logout:
                 Intent intent10 = new Intent(MActivity.this,MainActivity.class)
