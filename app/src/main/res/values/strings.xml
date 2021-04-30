@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">logistics</string>
+    <string name="voice_hint">语音助理使用规范\n你可以这样说：***在哪？如，牛奶在哪？系统将为您查询对应商品的位置\n您还可以这样说：***库存，或***还有（剩）多少？系统将为您查询出对应货品的库存</string>
+
 </resources>

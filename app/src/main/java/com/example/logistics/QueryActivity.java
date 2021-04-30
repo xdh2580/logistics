@@ -55,15 +55,15 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
                 String queryName = edit_query_name.getText().toString();
                 String queryShelve = edit_query_shelve.getText().toString();
 
-                if(queryName.equals("*")||queryShelve.equals("*")){
-                    Cursor cursor0 = db.rawQuery("select * from goods", new String[]{});
-                    showResult(cursor0);
-//                    Log.d("xdh0420",cursor0.getString());
-                }
-
                 if(!queryName.isEmpty()&&queryShelve.isEmpty()) {
-                    Cursor cursor1 = db.rawQuery("select * from goods where name = ? ", new String[]{queryName});
-                    showResult(cursor1);
+                    if(queryName.equals("*")){
+                        Cursor cursor0 = db.rawQuery("select * from goods", new String[]{});
+                        showResult(cursor0);
+//                    Log.d("xdh0420",cursor0.getString());
+                    }else {
+                        Cursor cursor1 = db.rawQuery("select * from goods where name = ? ", new String[]{queryName});
+                        showResult(cursor1);
+                    }
                 }else if(queryName.isEmpty()&&!queryShelve.isEmpty()){
                     Cursor cursor2 = db.rawQuery("select * from goods where shelve = ? ", new String[]{queryShelve});
                     showResult(cursor2);

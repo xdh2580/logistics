@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,13 +24,14 @@ public class VoiceActivity extends AppCompatActivity {
     // 引擎类型
     private String mEngineType = SpeechConstant.TYPE_CLOUD;
 
-    private String resultType = "json";
+    private String resultType = "plain";
     private HashMap<String, String> mIatResults = new LinkedHashMap<String, String>();
     private Toast mToast;
     private StringBuffer buffer = new StringBuffer();
 
     EditText mResultText;
     Button button;
+    TextView text_show_result;
 
     String resultOfString;//识别结果（字符串）
 
@@ -54,6 +56,7 @@ public class VoiceActivity extends AppCompatActivity {
         mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
         showTip("小语在！");
         mResultText = findViewById(R.id.text_result);
+        text_show_result = findViewById(R.id.text_voice_show_result);
         button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +125,7 @@ public class VoiceActivity extends AppCompatActivity {
             } else if (resultType.equals("plain")) {
                 buffer.append(results.getResultString());
                 mResultText.setText(buffer.toString());
+                showResultText(buffer.toString());//显示识别到的语音的相应回答
                 mResultText.setSelection(mResultText.length());
             }
 
@@ -149,6 +153,7 @@ public class VoiceActivity extends AppCompatActivity {
             //	}
         }
     };
+
     private void showTip(String str) {
 //        mToast = Toast.makeText(this,"", Toast.LENGTH_SHORT);
 //        mToast.cancel();
@@ -219,5 +224,14 @@ public class VoiceActivity extends AppCompatActivity {
         mResultText.setSelection(mResultText.length());
         return resultBuffer.toString();
     }
+
+    private void showResultText(String recoResult) {
+//        String answer = Utils.answer(VoiceActivity.this,"牛奶在哪");
+        Log.d("xdh","已经到showResult函数");
+
+        String answer = Utils.answer(VoiceActivity.this,recoResult);
+        text_show_result.setText(answer);
+    }
+
 
 }
