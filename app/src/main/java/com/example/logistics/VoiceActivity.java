@@ -24,9 +24,10 @@ public class VoiceActivity extends AppCompatActivity {
     // 引擎类型
     private String mEngineType = SpeechConstant.TYPE_CLOUD;
 
-    private String resultType = "plain";
+    private String resultType = "json";
     private HashMap<String, String> mIatResults = new LinkedHashMap<String, String>();
     private Toast mToast;
+
     private StringBuffer buffer = new StringBuffer();
 
     EditText mResultText;
@@ -61,6 +62,8 @@ public class VoiceActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //清空识别结果
+                mResultText.setText(null);
                 // 设置参数
                 setParam();
                 int ret = 0;
@@ -121,12 +124,15 @@ public class VoiceActivity extends AppCompatActivity {
 //            System.out.println(flg++);
             if (resultType.equals("json")) {
                 resultOfString = printAndReturnResult(results);
-
+                showResultText(resultOfString);//显示识别到的语音的相应回答
             } else if (resultType.equals("plain")) {
                 buffer.append(results.getResultString());
                 mResultText.setText(buffer.toString());
                 showResultText(buffer.toString());//显示识别到的语音的相应回答
                 mResultText.setSelection(mResultText.length());
+//                if(buffer.charAt(buffer.length())=='。') {
+//                    buffer.delete(0, buffer.length());
+//                }
             }
 
 //            if (isLast & cyclic) {
@@ -194,7 +200,7 @@ public class VoiceActivity extends AppCompatActivity {
         mIat.setParameter(SpeechConstant.VAD_EOS, "1000");
 
         // 设置标点符号,设置为"0"返回结果无标点,设置为"1"返回结果有标点
-        mIat.setParameter(SpeechConstant.ASR_PTT, "1");
+        mIat.setParameter(SpeechConstant.ASR_PTT, "0");
 
         // 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
         mIat.setParameter(SpeechConstant.AUDIO_FORMAT, "wav");
@@ -228,9 +234,9 @@ public class VoiceActivity extends AppCompatActivity {
     private void showResultText(String recoResult) {
 //        String answer = Utils.answer(VoiceActivity.this,"牛奶在哪");
         Log.d("xdh","已经到showResult函数");
-
         String answer = Utils.answer(VoiceActivity.this,recoResult);
         text_show_result.setText(answer);
+        Utils.playAnswer(VoiceActivity.this,answer);
     }
 
 
