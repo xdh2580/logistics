@@ -32,7 +32,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edit_add_good_init_quantity" android:hint="输入货品的初始数量"/>
         <TextView
@@ -42,7 +42,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edit_add_good_shelve" android:hint="输入货架号"/>
         <TextView
@@ -52,7 +52,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edit_add_good_layer" android:hint="输入隔层号"/>
         <TextView
@@ -72,7 +72,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edit_add_good_min" android:hint="输入补货提醒数量"/>
         <TextView
@@ -82,7 +82,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edit_add_good_max" android:hint="输入过多提醒数量"/>
         <Button

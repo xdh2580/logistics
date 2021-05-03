@@ -83,13 +83,14 @@ public class OtherActivity extends AppCompatActivity implements View.OnClickList
             case R.id.button_other_import:
 
                 Log.d("xdh0419","dirForImport:"+dirForImport.toString());
-                Boolean existDb = false;
+                boolean existDb = false;
                 for(File f: dirForImport.listFiles()){
                     Log.d("xdh0419",f.toString());
                     if(f.toString().endsWith(".db")){
                         existDb = true;
                         fileOfDatabase.delete();
-                        Boolean s = f.renameTo(fileOfDatabase);
+                        boolean s = copyFileByStream(f.toString(),fileOfDatabase.toString());
+//                        boolean s = f.renameTo(fileOfDatabase);
                         if(s) {
                             Toast.makeText(this, "导入成功", Toast.LENGTH_SHORT).show();
                         }else {
@@ -97,7 +98,7 @@ public class OtherActivity extends AppCompatActivity implements View.OnClickList
                         }
                     }
                 }
-                if(existDb = false)
+                if(existDb == false)
                     Toast.makeText(this, "目录下没有数据库文件", Toast.LENGTH_SHORT).show();
 
 
