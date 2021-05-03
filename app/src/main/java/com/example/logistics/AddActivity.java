@@ -15,6 +15,9 @@ public class AddActivity extends AppCompatActivity {
     EditText edit_add_good_init_quantity;
     EditText edit_add_good_shelve;
     EditText edit_add_good_layer;
+    EditText edit_add_good_unit;
+    EditText edit_add_good_min;
+    EditText edit_add_good_max;
 
     SQLiteDatabase db;
     MyDBOpenHelper myDBOpenHelper;
@@ -33,6 +36,9 @@ public class AddActivity extends AppCompatActivity {
         edit_add_good_shelve = (EditText) findViewById(R.id.edit_add_good_shelve);
         edit_add_good_layer = (EditText) findViewById(R.id.edit_add_good_layer);
         button_add_good = (Button) findViewById(R.id.button_add_good);
+        edit_add_good_unit = (EditText) findViewById(R.id.edit_add_good_unit);
+        edit_add_good_min = (EditText) findViewById(R.id.edit_add_good_min);
+        edit_add_good_max = (EditText) findViewById(R.id.edit_add_good_max);
 
         button_add_good.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,16 +48,21 @@ public class AddActivity extends AppCompatActivity {
                 String quantity = edit_add_good_init_quantity.getText().toString();
                 String shelve = edit_add_good_shelve.getText().toString();
                 String layer = edit_add_good_layer.getText().toString();
+                String unit = edit_add_good_unit.getText().toString();
+                String min = edit_add_good_min.getText().toString();
+                String max = edit_add_good_max.getText().toString();
 
 
-                if(name.isEmpty()||quantity.isEmpty()||shelve.isEmpty()||layer.isEmpty()){
+                if(name.isEmpty()||quantity.isEmpty()||shelve.isEmpty()||layer.isEmpty()||
+                unit.isEmpty()||min.isEmpty()||max.isEmpty()){
                     Toast.makeText(AddActivity.this, "请输入完整的货品信息", Toast.LENGTH_SHORT).show();
                 }else {
                     try {
-                        db.execSQL("insert into goods(name,quantity,shelve,layer)VALUES(?,?,?,?)",
-                                new Object[]{name, Integer.parseInt(quantity), Integer.parseInt(shelve), Integer.parseInt(layer)});
+                        db.execSQL("insert into goods(name,quantity,shelve,layer,unit,min,max)VALUES(?,?,?,?,?,?,?)",
+                                new Object[]{name, Integer.parseInt(quantity), Integer.parseInt(shelve), Integer.parseInt(layer),
+                                unit,Integer.parseInt(min),Integer.parseInt(max)});
                         ChangeLog.add(AddActivity.this,Utils.currentLoginUserName,db,
-                                "新增货品名称:"+name+" 初始数量:"+quantity+" 货架:"+shelve+" 隔层:"+layer);
+                                "新增货品名称:"+name+" 初始数量:"+quantity+" 单位:"+unit+" 货架:"+shelve+" 隔层:"+layer+" 范围:"+min+"~"+max);
                         Toast.makeText(AddActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
                         AddActivity.this.finish();
                     }catch (NumberFormatException ex){

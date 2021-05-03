@@ -17,11 +17,11 @@
                 android:layout_height="wrap_content" android:id="@+id/textView29" android:textAlignment="center"
                 android:textSize="20sp"/>
         <Button
-                android:text="发布入库任务"
+                android:text="补货（堆积）预警"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button_task_in"/>
+                android:layout_height="wrap_content" android:id="@+id/button_task_warn"/>
         <Button
-                android:text="发布出库任务"
+                android:text="发布任务"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/button_task_out"/>
         <Button

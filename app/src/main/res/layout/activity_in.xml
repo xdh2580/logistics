@@ -30,7 +30,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edit_in_quantity" android:hint="输入入库货品数量"/>
         <Button

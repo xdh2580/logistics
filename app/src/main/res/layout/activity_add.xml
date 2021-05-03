@@ -55,6 +55,36 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/edit_add_good_layer" android:hint="输入隔层号"/>
+        <TextView
+                android:text="数量单位："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView36"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_add_good_unit" android:hint="输入计量单位"/>
+        <TextView
+                android:text="补货提醒数："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView34"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_add_good_min" android:hint="输入补货提醒数量"/>
+        <TextView
+                android:text="堆积提醒数："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView35"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_add_good_max" android:hint="输入过多提醒数量"/>
         <Button
                 android:text="添加货品"
                 android:layout_width="match_parent"

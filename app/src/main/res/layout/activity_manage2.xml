@@ -33,7 +33,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edit_manage2_quantity"/>
         <TextView
@@ -43,7 +43,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edit_manage2_shelve"/>
         <TextView
@@ -53,9 +53,39 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edit_manage2_layer"/>
+        <TextView
+                android:text="数量单位："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView37"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_manage2_unit"/>
+        <TextView
+                android:text="补货提醒数量："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView38"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/edit_manage2_min"/>
+        <TextView
+                android:text="过多提醒数量："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView39"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/edit_manage2_max"/>
         <Button
                 android:text="保存修改"
                 android:layout_width="match_parent"

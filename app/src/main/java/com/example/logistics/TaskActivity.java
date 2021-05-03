@@ -1,6 +1,7 @@
 package com.example.logistics;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -17,7 +18,7 @@ import java.util.Date;
 
 public class TaskActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button button_task_in;
+    Button button_task_warn;
     Button button_task_out;
     Button button_task_random_select;
     SQLiteDatabase db;
@@ -34,11 +35,11 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void init() {
-        button_task_in = findViewById(R.id.button_task_in);
+        button_task_warn = findViewById(R.id.button_task_warn);
         button_task_out = findViewById(R.id.button_task_out);
         button_task_random_select = findViewById(R.id.button_task_random_select);
 
-        button_task_in.setOnClickListener(this);
+        button_task_warn.setOnClickListener(this);
         button_task_out.setOnClickListener(this);
         button_task_random_select.setOnClickListener(this);
 
@@ -49,8 +50,9 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.button_task_in:
-
+            case R.id.button_task_warn:
+                Intent intent = new Intent(TaskActivity.this,WarnActivity.class);
+                startActivity(intent);
                 break;
             case R.id.button_task_out:
 

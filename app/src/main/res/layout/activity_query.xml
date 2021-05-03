@@ -33,7 +33,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edit_qurey_shelve" android:hint="在此输入要查询的货架号"/>
         <Button

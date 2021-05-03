@@ -19,19 +19,20 @@ public class MyDBOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO user(name,password)VALUES('user1','123456')");
         db.execSQL("INSERT INTO user(name,password)VALUES('user2','654321')");
         //货品表goods
-        db.execSQL("CREATE TABLE goods(gid INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(20),quantity INTEGER,shelve INTEGER,layer INTEGER)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('牛奶',268,1,2)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('纸巾',354,2,1)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('洗衣液',56,2,2)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('毛巾',135,2,3)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('方便面',257,1,1)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('饼干',457,1,4)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('牛肉干',569,1,3)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('咖啡',395,1,5)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('面包',563,1,6)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('鞋子',146,3,2)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('夹克',79,3,1)");
-        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer)VALUES('牛仔裤',246,3,2)");
+        db.execSQL("CREATE TABLE goods(gid INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(20)" +
+                ",quantity INTEGER,shelve INTEGER,layer INTEGER,min INTEGER default 20,max INTEGER default 1000,unit VARCHAR(10) default '（数量单位）')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('牛奶',268,1,2,50,1000,'箱')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('纸巾',354,2,1,50,800,'卷')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('洗衣液',56,2,2,50,700,'瓶')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('毛巾',135,2,3,50,900,'条')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('方便面',257,1,1,50,1200,'箱')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('饼干',457,1,4,50,1500,'袋')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('牛肉干',569,1,3,50,800,'包')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('咖啡',395,1,5,50,800,'包')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('面包',563,1,6,50,1000,'箱')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('鞋子',146,3,2,50,800,'双')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('夹克',79,3,1,50,600,'件')");
+        db.execSQL("INSERT INTO goods(name,quantity,shelve,layer,min,max,unit)VALUES('牛仔裤',246,3,2,50,500,'条')");
 
         //拣货订单表（订单名称，订单内容）
         //内容格式存储为字符串(goodName1,quantity1)(goodName2,quantity2)……
