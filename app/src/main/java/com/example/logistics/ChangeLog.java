@@ -40,7 +40,7 @@ public class ChangeLog  {
                 new String[]{userName,detail,getCurrentTime()});
     }
     public static void select(Context context, String userName, SQLiteDatabase db, String detail) {
-        db.execSQL("insert into log(user,type,detail,time)values(?,'modGood',?,?)",
+        db.execSQL("insert into log(user,type,detail,time)values(?,'selGood',?,?)",
                 new String[]{userName,detail,getCurrentTime()});
     }
 

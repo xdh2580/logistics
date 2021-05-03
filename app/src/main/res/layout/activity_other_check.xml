@@ -16,6 +16,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textView31" android:textAlignment="center"
                 android:textSize="20sp"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/spinner_check_type"/>
         <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:id="@+id/list_other_check"/>
