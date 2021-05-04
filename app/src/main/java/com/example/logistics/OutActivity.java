@@ -1,9 +1,11 @@
 package com.example.logistics;
 
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.*;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -52,11 +54,11 @@ public class OutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String outName= (String) spinner_out.getSelectedItem();
+                final String outName= (String) spinner_out.getSelectedItem();
 
-                String outNum = edit_out_quantity.getText().toString();
+                final String outNum = edit_out_quantity.getText().toString();
                 if(!outNum.isEmpty()) {
-                    int outNumInt = Integer.parseInt(outNum);
+                    final int outNumInt = Integer.parseInt(outNum);
 
                     Cursor cursor = db.rawQuery("select quantity from goods where name=?", new String[]{outName});
                     cursor.moveToFirst();
@@ -64,13 +66,25 @@ public class OutActivity extends AppCompatActivity {
 
                     int finalNum = initNum - outNumInt;
 
-                    String finalNumStr = String.valueOf(finalNum);
+                    final String finalNumStr = String.valueOf(finalNum);
                     if(finalNum < 0){
                         Toast.makeText(OutActivity.this, "库存不足", Toast.LENGTH_SHORT).show();
                     }else {
-                        db.execSQL("update goods set quantity=? where name=?", new String[]{finalNumStr, outName});
-                        ChangeLog.out(OutActivity.this,Utils.currentLoginUserName,db,outName+"成功出库"+outNum);
-                        Toast.makeText(OutActivity.this, outName + "成功出库" + outNumInt, Toast.LENGTH_SHORT).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(OutActivity.this)
+                                .setTitle("货品入库")
+                                .setMessage("\n请您确认出库信息\n\n出库货品："+spinner_out.getSelectedItem().toString()+
+                                        "\n操作人："+Utils.currentLoginUserName+"\n入库数量："+outNum)
+                                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        db.execSQL("update goods set quantity=? where name=?", new String[]{finalNumStr, outName});
+                                        ChangeLog.out(OutActivity.this,Utils.currentLoginUserName,db,outName+"成功出库"+outNum);
+                                        Toast.makeText(OutActivity.this, "出库成功" , Toast.LENGTH_SHORT).show();
+                                        edit_out_quantity.setText("");
+                                    }
+                                })
+                                .setNegativeButton("取消",null);
+                        builder.show();
                     }
                 }else{
                     Toast.makeText(OutActivity.this, "出库数量不能为空", Toast.LENGTH_SHORT).show();
