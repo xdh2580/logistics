@@ -52,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
                     ChangeLog.register(RegisterActivity.this,name,db,password1);
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
+                    Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                 }
             }
         });

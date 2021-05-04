@@ -1,8 +1,11 @@
 package com.example.logistics;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -98,9 +101,20 @@ public class MActivity extends AppCompatActivity implements View.OnClickListener
                 startActivity(intent9);
                 break;
             case R.id.button_logout:
-                Intent intent10 = new Intent(MActivity.this,MainActivity.class)
-                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent10);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                        .setTitle("退出登录")
+                        .setMessage("\n登出当前账户？")
+                        .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent10 = new Intent(MActivity.this,MainActivity.class)
+                                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent10);
+                            }
+                        })
+                        .setNegativeButton("取消",null);
+                builder.show();
                 break;
             default:
                 break;

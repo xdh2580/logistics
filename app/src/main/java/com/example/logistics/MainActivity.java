@@ -55,15 +55,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         String name = cursor1.getString(cursor1.getColumnIndex("name"));
                         String password = cursor1.getString(cursor1.getColumnIndex("password"));
                        if(loginName.equals(name)&&loginPassword.equals(password)){
-                           Intent intent = new Intent(MainActivity.this,MActivity.class);
+                           //退出到指定activity并清空返回栈
+                           Intent intent = new Intent(this,MActivity.class)
+                                   .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                            startActivity(intent);
                             Utils.currentLoginUserName = name;//记录当前登录的用户名
                            ChangeLog.logIn(MainActivity.this,name,db);//保存登录日志记录
                            Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
                            r = true;
                            break;
-                       }else{
-
                        }
                     } while (cursor1.moveToNext());
                 }
