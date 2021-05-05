@@ -30,6 +30,7 @@ public class SelectActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_select2);
 
         init();
+        Utils.playAnswer(this,"请按如下顺序开始拣货，完成后确认");
 
         orderName = getIntent().getStringExtra("name");
 

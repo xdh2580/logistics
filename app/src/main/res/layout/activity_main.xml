@@ -31,13 +31,13 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/edit_login_name" android:hint="name"/>
+                android:id="@+id/edit_login_name" android:hint="用户名"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/edit_login_password" android:hint="password" android:password="true"/>
+                android:id="@+id/edit_login_password" android:hint="密码" android:password="true"/>
         <Button
                 android:text="登录"
                 android:layout_width="match_parent"

@@ -68,9 +68,11 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
                     Cursor cursor2 = db.rawQuery("select * from goods where shelve = ? ", new String[]{queryShelve});
                     showResult(cursor2);
                 }else if(!queryName.isEmpty()&&!queryShelve.isEmpty()){
+                    Utils.playAnswer(this,"只能输入一个查询条件");
                     Toast.makeText(this, "只能输入一个查询条件", Toast.LENGTH_SHORT).show();
                 }else{
-                Toast.makeText(this, "请输入查询限制", Toast.LENGTH_SHORT).show();
+                    Utils.playAnswer(this,"请输入查询限制");
+                    Toast.makeText(this, "请输入查询限制", Toast.LENGTH_SHORT).show();
             }
                 break;
             }
@@ -100,9 +102,11 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
 
         String all = total.toString();
         if(!all.isEmpty()) {
+            Utils.playAnswer(QueryActivity.this,"查询成功");
             Toast.makeText(this, "查询成功", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this, "没有符合条件的货品信息", Toast.LENGTH_SHORT).show();
+            Utils.playAnswer(QueryActivity.this,"没有找到符合条件的货品信息");
+            Toast.makeText(this, "没有找到符合条件的货品信息", Toast.LENGTH_SHORT).show();
         }
     }
 }

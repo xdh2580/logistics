@@ -87,6 +87,7 @@ public class InActivity extends AppCompatActivity {
                     builder.show();
 
                 }else{
+                    Utils.playAnswer(InActivity.this,"入库数量不能为空");
                     Toast.makeText(InActivity.this, "入库数量不能为空", Toast.LENGTH_SHORT).show();
                 }
             }

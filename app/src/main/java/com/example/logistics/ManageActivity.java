@@ -75,6 +75,7 @@ public class ManageActivity extends AppCompatActivity {
                                         new String[]{spinner_manage_select.getSelectedItem().toString()});
                                 ChangeLog.del(ManageActivity.this,Utils.currentLoginUserName,db,
                                         "删除货品"+spinner_manage_select.getSelectedItem().toString());
+                                Utils.playAnswer(ManageActivity.this,"删除成功");
                                 Toast.makeText(ManageActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
                                 notifyDataChanged(arrayAdapter);
                             }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -71,6 +72,8 @@ public class WarnActivity extends AppCompatActivity {
         Cursor cursor = db.rawQuery("select * from goods where quantity>max or quantity<min",new String[]{});
         int num = cursor.getCount();
         if(num == 0 ){
+            Utils.playAnswer(this,"所有货品库存正常");
+            Toast.makeText(this, "所有货品库存正常", Toast.LENGTH_SHORT).show();
             warnList.add("所有货品库存正常，没有需要补货或及时出库的货品");
         }else{
             cursor.moveToFirst();

@@ -79,6 +79,7 @@ public class OutActivity extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int which) {
                                         db.execSQL("update goods set quantity=? where name=?", new String[]{finalNumStr, outName});
                                         ChangeLog.out(OutActivity.this,Utils.currentLoginUserName,db,outName+"成功出库"+outNum);
+                                        Utils.playAnswer(OutActivity.this,"出库成功");
                                         Toast.makeText(OutActivity.this, "出库成功" , Toast.LENGTH_SHORT).show();
                                         edit_out_quantity.setText("");
                                     }
@@ -87,6 +88,7 @@ public class OutActivity extends AppCompatActivity {
                         builder.show();
                     }
                 }else{
+                    Utils.playAnswer(OutActivity.this,"出库数量不能为空");
                     Toast.makeText(OutActivity.this, "出库数量不能为空", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -2,12 +2,14 @@ package com.example.logistics;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.iflytek.cloud.SpeechUtility;
 
 public class MActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -29,6 +31,13 @@ public class MActivity extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_m);
 
         initView();
+        SpeechUtility b = SpeechUtility.createUtility(this, "appid=47149c79");
+        Log.d("xdh","utility创建完了");
+        if(b==null){
+            Log.d("xdh","是空的");
+        }else{
+            Log.d("xdh","没毛病");
+        }
 
     }
 

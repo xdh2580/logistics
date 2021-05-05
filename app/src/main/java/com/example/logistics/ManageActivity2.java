@@ -97,6 +97,7 @@ public class ManageActivity2 extends AppCompatActivity {
 //
                     //修改信息写入log稍微复杂些，此处根据修改的信息不同写入不同的detail,封装成方法
                     writeModLog(modName, modQuantity, modShelve, modLayer,modUnit,modMin,modMax);
+                    Utils.playAnswer(ManageActivity2.this,"修改成功");
                     Toast.makeText(ManageActivity2.this, "修改成功", Toast.LENGTH_SHORT).show();
                     ManageActivity2.this.finish();
                 }

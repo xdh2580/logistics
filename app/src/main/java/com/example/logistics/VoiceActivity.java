@@ -40,15 +40,8 @@ public class VoiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice);
-        SpeechUtility b = SpeechUtility.createUtility(this, "appid=47149c79");
-        Log.d("xdh","utility创建完了");
-        if(b==null){
-            Log.d("xdh","是空的");
-        }else{
-            Log.d("xdh","没毛病");
-        }
         mIat = SpeechRecognizer.createRecognizer(this, mInitListener);
-        Log.d("xdh", "创建完了");
+        Log.d("xdh", "识别对象创建完了");
         if (mIat == null) {
             Log.d("xdh", "是空的");
         } else {

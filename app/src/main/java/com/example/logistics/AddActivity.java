@@ -55,6 +55,7 @@ public class AddActivity extends AppCompatActivity {
 
                 if(name.isEmpty()||quantity.isEmpty()||shelve.isEmpty()||layer.isEmpty()||
                 unit.isEmpty()||min.isEmpty()||max.isEmpty()){
+                    Utils.playAnswer(AddActivity.this,"请输入完整的货品信息");
                     Toast.makeText(AddActivity.this, "请输入完整的货品信息", Toast.LENGTH_SHORT).show();
                 }else {
                     try {
@@ -63,6 +64,7 @@ public class AddActivity extends AppCompatActivity {
                                 unit,Integer.parseInt(min),Integer.parseInt(max)});
                         ChangeLog.add(AddActivity.this,Utils.currentLoginUserName,db,
                                 "新增货品名称:"+name+" 初始数量:"+quantity+" 单位:"+unit+" 货架:"+shelve+" 隔层:"+layer+" 范围:"+min+"~"+max);
+                        Utils.playAnswer(AddActivity.this,"添加成功");
                         Toast.makeText(AddActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
                         AddActivity.this.finish();
                     }catch (NumberFormatException ex){
