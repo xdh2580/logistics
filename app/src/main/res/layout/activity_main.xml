@@ -38,6 +38,19 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/edit_login_password" android:hint="密码" android:password="true"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <CheckBox
+                    android:text="记住密码"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/checkBox_rember_password" android:layout_weight="1"/>
+            <CheckBox
+                    android:text="自动登录"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/checkBox_auto_login" android:layout_weight="1"/>
+        </LinearLayout>
         <Button
                 android:text="登录"
                 android:layout_width="match_parent"
@@ -47,10 +60,5 @@
                 android:text="注册"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/button_register"/>
-        <Button
-                android:text="Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button_test"
-                android:background="@drawable/button_drawbale"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,12 +3,16 @@ package com.example.logistics;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.appcompat.view.menu.ActionMenuItemView;
 import com.iflytek.cloud.SpeechUtility;
 
 public class MActivity extends AppCompatActivity implements View.OnClickListener{
@@ -24,6 +28,42 @@ public class MActivity extends AppCompatActivity implements View.OnClickListener
     private Button button_voice;
     private Button button_logout;
 
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        // Set 'delete' menu item state depending on count
+        MenuItem deleteItem = menu.findItem(R.id.cur);
+        deleteItem.setTitle("当前登录："+Utils.currentLoginUserName.toLowerCase());
+
+//        ActionMenuItemView m = findViewById(R.id.cur);
+//        m.setTitle(Utils.currentLoginUserName);
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    //此方法的作用是创建一个选项菜单，我们要重写这个方法
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //加载菜单文件
+        getMenuInflater().inflate(R.menu.title_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    //在点击这个菜单的时候，会做对应的事，类似于侦听事件，这里我们也要重写它
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //这里是一个switch语句,主要通过menu文件中的id值来确定点了哪个菜单，然后做对应的操作，这里的menu是指你加载的那个菜单文件
+        switch (item.getItemId()) {
+            case R.id.cur:
+                Toast.makeText(this, "点击", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.item2:
+//
+//                Toast.makeText(this, "点", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +103,6 @@ public class MActivity extends AppCompatActivity implements View.OnClickListener
         button_other.setOnClickListener(this);
         button_voice.setOnClickListener(this);
         button_logout.setOnClickListener(this);
-
 
 
 
